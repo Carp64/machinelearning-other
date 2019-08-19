@@ -3,10 +3,10 @@ import re
 
 prompts = {
     "what": "What is a Video Game Console?",
-    "use": "What are Video Game Consoles used for",
-    "around": "Around what time did the first video games come out",
-    "when": "When did the NES release in Japan",
-    "best": "What is the best selling video game console"
+    "use": "What are Video Game Consoles used for.",
+    "around": "Around what time did the first video games come out.",
+    "when": "When did the NES release in Japan.",
+    "best": "What is the best selling video game console."
 }
 
 responses = {
