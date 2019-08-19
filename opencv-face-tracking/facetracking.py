@@ -17,7 +17,7 @@ while(True):
     faces = classifier.detectMultiScale(gray, 1.3, 5)
 
     for (x, y, w, h) in faces:
-        cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 5)
+        cv2.rectangle(img, (x, y), (x+w, y+h), (0, 254, 0), 5)
     
     cv2.imshow('Face Tracking', img)
 
