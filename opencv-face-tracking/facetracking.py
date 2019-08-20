@@ -40,7 +40,7 @@ while(True):
 
     cv2.rectangle(img, (targetX, targetY), (targetX + targetW, + targetY + targetW), (0, 0, 255), 20)
 
-    cv2.putText(img, "Points: " + str(points), (0, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
+    cv2.putText(img, "Points: " + str(points), (0, 50), cv2.FONT, 1, (255, 0, 0), 2)
 
     cv2.imshow('Face Tracking', img)
 
