@@ -1,6 +1,6 @@
 const LIFE_SPAN = 1000; // how long do files live
 const POP_SIZE = 500; // How many flies do we want
-const REWARD_MULT = 10; // What is the reward for finding food
+const REWARD_MULT = 1000; // What is the reward for finding food
 const PUNISH_DIV = 3; // What is the punishment for hitting something
 const MUTATION_RATE = 0.1; // What is the rate at which flies mutate
 

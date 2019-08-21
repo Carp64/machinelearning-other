@@ -10,6 +10,10 @@ class Fly {
         this.fitness = 0;
         this.hitSomething = false;
         this.gotFood = false;
+
+        this.searchingColor = color(255, 255, 255, 150);
+        this.foundColor = color(38, 255, 0, 150)
+        this.hitColor = color(255, 0, 0, 150)
     }
 
     calcFitness(){
@@ -67,7 +71,15 @@ class Fly {
         textSize(10);
         text(this.fitness.toFixed(1), 0, 0)
         rotate(this.vel.heading());
-        fill(255, 255, 255, 150)
+
+        if(this.gotFood){
+            fill(this.foundColor);
+        } else if (this.hitSomething) {
+            fill(this.hitColor)
+        } else {
+            fill(this.searchingColor);
+        }
+        
         rectMode(CENTER);
         rect(0, 0, 25, 15);
         pop();
