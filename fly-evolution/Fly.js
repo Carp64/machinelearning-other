@@ -9,6 +9,7 @@ class Fly {
         this.food = food;
         this.fitness = 0;
         this.hitSomething = false;
+        this.gotFood = false;
     }
 
     calcFitness(){
@@ -46,6 +47,7 @@ class Fly {
         // Check Food
         let distance = dist(this.pos.x, this.pos.y, this.food.pos.x, this.food.pos.y);
         if(distance < this.food.radius){
+            this.gotFood = true;
             this.hitSomething = true;
         }
 
@@ -62,6 +64,7 @@ class Fly {
         noStroke();
         translate(this.pos.x, this.pos.y);
         fill(255, 255, 255);
+        textSize(10);
         text(this.fitness.toFixed(1), 0, 0)
         rotate(this.vel.heading());
         fill(255, 255, 255, 150)
