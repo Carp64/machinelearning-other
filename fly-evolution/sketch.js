@@ -6,27 +6,17 @@ const MUTATION_RATE = 0.1; // What is the rate at which flies mutate
 
 let count = 0;
 
-let fly, food;
-
 function setup() {
     console.log("Hello World!");
 
     createCanvas(640, 480);
 
-    fly = new Fly(LIFE_SPAN);
-    food = new Food(width/2, 50, 50);
-    wall = new Wall(width/2, height - height/3, 300, 30);
+    population = new Population(LIFE_SPAN, POP_SIZE, REWARD_MULT, PUNISH_DIV)
 }
 
 function draw() {
-    background(105, 255, 135);
-
-    fly.update(count);
-    fly.show();
-
-    food.show();
-    wall.show();
-
+    background(0, 0, 0);
+    population.run(count);
     count++;
 
     if(count == LIFE_SPAN){
