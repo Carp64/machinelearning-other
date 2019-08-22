@@ -1,6 +1,95 @@
 class Dino {
-    constructor() {
+    constructor(playerControlled) {
+        this.originalWidth = 30;
+        this.originalHeight = 50;
+        this.width = this.originalWidth;
+        this.height = this.originalHeight
 
+        this.pos = createVector(width / 4, this.calcGroundPosition());
+        this.vel = createVector();
+
+        this.playerControlled = playerControlled;
+
+        this.playerControlled = playerControlled;
+
+        this.isAlive = true;
+
+        this.brain = brain;
+    }
+
+    calcGroundPosition() {
+        return (height - height / 4 - this.height/2); 
+    }
+
+    update(closestCactus) {
+        this.vel.y += -0.6; // Strength of Gravity
+        this.pos.y -= this.vel.y; // Apply Gravity to Dino
+
+        let groundPos = this.calcGroundPosition();
+
+        if(!this.playerControlled){
+            this.think(closestCactus);
+        }
+
+        if (this.pos.y >= groundPos) {
+            this.pos.y = groundPos;
+            this.vel.y = 0;
+        }
+        if(this.hitCactus(closestCactus)){
+            this.isAlive = false;
+        }
+    }
+
+    think(cactus){
+
+        let distance = cactus.pos.x - cactus.width / 2 - this.pos.x + this.width / 2;
+
+        let actions = this.brain.predict([distance, cactus.count]);
+
+        let choice = actions.indexOf(Math.max(...actions)); 
+
+        if(choice == 0){
+            this.unDuck();
+            this.jump();
+        }else if(choice == 1){
+            this.duck();
+        }else{
+            this.unDuck();
+        }
+    }
+
+    jump(){
+
+        if(this.pos.y == this.calcGroundPosition() && this.height > this.originalWidth){ // Not Crouched
+            this.vel.y = 14; // Jump Strength;
+        }
+    }
+
+    duck(){
+        if(this.pos.y == this.calcGroundPosition()){
+            this.height = this.originalWidth;
+            this.width = this.originalHeight;
+        }
+    }
+
+    unDuck(){
+        this.height = this.originalHeight;
+        this.width = this.originalWidth;
+    }
+
+
+    show(){
+        push();
+        noStroke();
+        translate(this.pos.x, this.pos.y);
+        if(this.playerControlled){
+            fill(0, 0, 100, 100);
+        } else {
+            fill(0, 100, 0, 100);
+        }
+        rectMode(CENTER);
+        rect(0, 0, this.width, this.height);
+        pop();
     }
 
     hitCactus(cactus) {
@@ -13,5 +102,4 @@ class Dino {
         }
         return false;
     }
-
 }
