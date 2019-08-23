@@ -4,9 +4,12 @@ import numpy as np
 pixel = (0,0,0)
 imageHSV = None
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, 640)
 cap.set(4, 480)
+
+scored = False
+ready = True
 
 def pickColor(event,x,y,flags,param):
     if event == cv2.EVENT_LBUTTONDOWN:
